@@ -1,11 +1,18 @@
 package pl.chylu.listeners;
 
 import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.commands.build.CommandData;
+import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import org.jetbrains.annotations.NotNull;
 import pl.chylu.Main;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EventListener  extends ListenerAdapter {
     @Override
@@ -19,7 +26,7 @@ public class EventListener  extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
-        String message = event.getMessage().getContentRaw();
+        String message = event.getMessage().getContentRaw().toLowerCase();
 
         if (message.contains(Main.prefix)) {
             try {

@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
 import pl.chylu.listeners.EventListener;
+import pl.chylu.listeners.SlashCommands;
 
 import javax.security.auth.login.LoginException;
 
@@ -30,7 +31,7 @@ public class Main {
                 GatewayIntent.DIRECT_MESSAGE_TYPING, GatewayIntent.GUILD_MEMBERS);
         shardManager = builder.build();
 
-        shardManager.addEventListener(new EventListener());
+        shardManager.addEventListener(new EventListener(), new SlashCommands());
     }
 
     public Dotenv getConfig() {
